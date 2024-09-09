@@ -13,6 +13,7 @@
  * - This tool reads the KEY-NUMBER (!) and not the ASCII CODE.
  *   The KEY-NUMBER needs to be transposed to get the actual ASCII
  *   CHARACTER. Transposition is done using US-Keyboard layout.
+ *   Check with 'localectl status' or 'cat /etc/default/keyboard'
  * - Needs an actual keyboard. Won't work on remote VNC sessions.
  */
 

@@ -89,7 +89,7 @@ tracepoint:syscalls:sys_enter_write,
     // Do not output Arrow-UP/DOWN
     if ($len == 3 && $b[0] == 0x1b) { return; }
 
-    $special = -1;
+    $special = 0;
     if ($len == 1) {
         // Special character. Only output ONCE
         if ($b[0] < 0x20 || $b[0] > 0x7e) {
@@ -102,10 +102,10 @@ tracepoint:syscalls:sys_enter_write,
         if (@last_special != 0x0d) { printf("\n"); }
 		printf(">>>> \x1b[0;33m%d\x1b[0m %s (uid=%d):\n", pid, comm, uid);
         @last_id = $this_id;
-        @last_special = -1;
+        @last_special = 0;
     }
 
-    if ($special >= 0) {
+    if ($special > 0) {
         // Only output special characters ONCE.
         if (@last_special == $special) { return; }
         // Never output if at the beginning of a new line
@@ -146,7 +146,7 @@ tracepoint:syscalls:sys_enter_writev
     // Do not output Arrow-UP/DOWN
     if ($len == 3 && $b[0] == 0x1b) { return; }
 
-    $special = -1;
+    $special = 0;
     if ($len == 1) {
         // Special character. Only output ONCE
         if ($b[0] < 0x20 || $b[0] > 0x7e) {
@@ -159,10 +159,10 @@ tracepoint:syscalls:sys_enter_writev
         if (@last_special != 0x0d) { printf("\n"); }
 		printf(">>>> \x1b[0;33m%d\x1b[0m %s (uid=%d):\n", pid, comm, uid);
         @last_id = $this_id;
-        @last_special = -1;
+        @last_special = 0;
     }
 
-    if ($special >= 0) {
+    if ($special > 0) {
         // Only output special characters ONCE.
         if (@last_special == $special) { return; }
         // Never output if at the beginning of a new line
